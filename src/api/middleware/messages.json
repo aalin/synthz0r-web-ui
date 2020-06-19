@@ -1,0 +1,311 @@
+{
+  "nested": {
+    "synthz0r": {
+      "nested": {
+        "messages": {
+          "nested": {
+            "Envelope": {
+              "fields": {
+                "id": {
+                  "type": "uint32",
+                  "id": 1
+                },
+                "type": {
+                  "type": "string",
+                  "id": 2
+                },
+                "payload": {
+                  "type": "bytes",
+                  "id": 3
+                }
+              }
+            },
+            "TextRequest": {
+              "fields": {
+                "message": {
+                  "type": "string",
+                  "id": 1
+                }
+              }
+            },
+            "TextResponse": {
+              "fields": {
+                "message": {
+                  "type": "string",
+                  "id": 1
+                }
+              }
+            },
+            "ErrorResponse": {
+              "fields": {
+                "message": {
+                  "type": "string",
+                  "id": 1
+                }
+              }
+            },
+            "SuccessResponse": {
+              "fields": {}
+            },
+            "Channel": {
+              "fields": {
+                "id": {
+                  "type": "uint32",
+                  "id": 1
+                },
+                "name": {
+                  "type": "string",
+                  "id": 2
+                },
+                "instrument": {
+                  "type": "Device",
+                  "id": 3
+                },
+                "noteDevices": {
+                  "rule": "repeated",
+                  "type": "Device",
+                  "id": 4
+                },
+                "effectDevices": {
+                  "rule": "repeated",
+                  "type": "Device",
+                  "id": 5
+                }
+              }
+            },
+            "ListChannelsRequest": {
+              "fields": {}
+            },
+            "ListChannelsResponse": {
+              "fields": {
+                "channels": {
+                  "rule": "repeated",
+                  "type": "Channel",
+                  "id": 1
+                }
+              }
+            },
+            "CreateChannelRequest": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                }
+              }
+            },
+            "CreateChannelResponse": {
+              "fields": {
+                "channel": {
+                  "type": "Channel",
+                  "id": 1
+                }
+              }
+            },
+            "RemoveChannelRequest": {
+              "fields": {
+                "id": {
+                  "type": "uint32",
+                  "id": 1
+                }
+              }
+            },
+            "SetChannelInstrumentRequest": {
+              "fields": {
+                "channelId": {
+                  "type": "uint32",
+                  "id": 1
+                },
+                "instrumentId": {
+                  "type": "uint32",
+                  "id": 2
+                }
+              }
+            },
+            "SetChannelInstrumentResponse": {
+              "fields": {
+                "channel": {
+                  "type": "Channel",
+                  "id": 1
+                }
+              }
+            },
+            "DeviceParameter": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "min": {
+                  "type": "int32",
+                  "id": 2
+                },
+                "max": {
+                  "type": "int32",
+                  "id": 3
+                },
+                "defaultValue": {
+                  "type": "int32",
+                  "id": 4
+                },
+                "value": {
+                  "type": "int32",
+                  "id": 5
+                },
+                "scale": {
+                  "type": "float",
+                  "id": 6
+                },
+                "unit": {
+                  "type": "string",
+                  "id": 7
+                }
+              }
+            },
+            "DeviceTable": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "min": {
+                  "type": "int32",
+                  "id": 2
+                },
+                "max": {
+                  "type": "int32",
+                  "id": 3
+                },
+                "defaultValue": {
+                  "type": "int32",
+                  "id": 4
+                },
+                "data": {
+                  "rule": "repeated",
+                  "type": "int32",
+                  "id": 5
+                }
+              }
+            },
+            "Device": {
+              "fields": {
+                "id": {
+                  "type": "uint32",
+                  "id": 1
+                },
+                "name": {
+                  "type": "string",
+                  "id": 2
+                },
+                "parameters": {
+                  "rule": "repeated",
+                  "type": "DeviceParameter",
+                  "id": 3
+                },
+                "tables": {
+                  "rule": "repeated",
+                  "type": "DeviceTable",
+                  "id": 4
+                }
+              }
+            },
+            "UpdateDeviceParameterRequest": {
+              "fields": {
+                "id": {
+                  "type": "uint32",
+                  "id": 1
+                },
+                "name": {
+                  "type": "string",
+                  "id": 2
+                },
+                "value": {
+                  "type": "int32",
+                  "id": 3
+                }
+              }
+            },
+            "UpdateDeviceParameterResponse": {
+              "fields": {
+                "parameters": {
+                  "rule": "repeated",
+                  "type": "DeviceParameter",
+                  "id": 1
+                }
+              }
+            },
+            "UpdateDeviceTableRequest": {
+              "fields": {
+                "id": {
+                  "type": "uint32",
+                  "id": 1
+                },
+                "name": {
+                  "type": "string",
+                  "id": 2
+                },
+                "data": {
+                  "rule": "repeated",
+                  "type": "int32",
+                  "id": 3
+                }
+              }
+            },
+            "UpdateDeviceTableResponse": {
+              "fields": {
+                "tables": {
+                  "rule": "repeated",
+                  "type": "DeviceTable",
+                  "id": 1
+                }
+              }
+            },
+            "CreateInstrumentDeviceRequest": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "channelId": {
+                  "type": "int32",
+                  "id": 2
+                }
+              }
+            },
+            "CreateNoteDeviceRequest": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "channelId": {
+                  "type": "int32",
+                  "id": 2
+                }
+              }
+            },
+            "CreateEffectDeviceRequest": {
+              "fields": {
+                "name": {
+                  "type": "string",
+                  "id": 1
+                },
+                "channelId": {
+                  "type": "int32",
+                  "id": 2
+                }
+              }
+            },
+            "CreateDeviceResponse": {
+              "fields": {
+                "device": {
+                  "type": "Device",
+                  "id": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
