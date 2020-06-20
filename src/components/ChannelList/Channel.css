@@ -33,6 +33,10 @@
   margin: var(--spacing);
 }
 
+.tableData {
+    max-width: 20em;
+}
+
 .tableData li {
   margin: 1px;
   border: 1px solid #333;
