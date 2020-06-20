@@ -1,10 +1,9 @@
 import { connect } from 'react-redux'
 import * as apiActions from '../api/actions'
-import { nameToValue } from '../api/deviceTypeEnum'
 
 function mapStateToProps(state) {
   return {
-    channels: state.channels,
+    channels: state.channels.channels,
   }
 }
 
@@ -26,14 +25,11 @@ function mapDispatchToProps(dispatch) {
         apiActions.request('CreateInstrumentDeviceRequest', { channelId, name })
       )
     },
-    addDevice(channelId, typeName) {
-      const type = nameToValue(typeName)
-
-      return (name) => {
-        dispatch(
-          apiActions.request(`CreateDeviceRequest`, { channelId, name, type })
-        )
-      }
+    openNewDeviceForm(channelId, typeName) {
+      dispatch({
+        type: 'OPEN_NEW_DEVICE_FORM',
+        payload: { typeName, channelId },
+      })
     },
   }
 }

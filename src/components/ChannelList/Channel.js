@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import Header from './Header'
+import Header from '../Header'
 import DeviceParameters from './DeviceParameters'
 import DeviceTables from './DeviceTables'
 import styles from './Channel.css'
@@ -32,7 +32,7 @@ function DeviceList({ title, devices, addDevice }) {
           <button
             key="add"
             className={styles.addButton}
-            onClick={() => { console.log("hello"); addDevice("Sequencer") }}
+            onClick={addDevice}
           >
             + Add
           </button>

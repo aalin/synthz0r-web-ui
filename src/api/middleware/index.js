@@ -11,6 +11,7 @@ export default (uri) => {
 
     client.on('open', () => {
       store.dispatch({ type: 'api_connected' })
+      store.dispatch(actions.request('ListDeviceNamesRequest'))
       store.dispatch(actions.request('ListChannelsRequest'))
     })
 

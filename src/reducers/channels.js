@@ -6,9 +6,7 @@ const INITIAL_STATE = {
 
 function addDevice(channels, channelId, device) {
   return channels.map((channel) => {
-    console.log(channel.id, channelId)
     if (channel.id === channelId) {
-      console.log(device)
       switch (valueToName(device.type)) {
         case 'NOTE_DEVICE':
           return { ...channel, noteDevices: [...channel.noteDevices, device] }
@@ -18,7 +16,7 @@ function addDevice(channels, channelId, device) {
             effectDevices: [...channel.effectDevices, device],
           }
         case 'INSTRUMENT_DEVICE':
-          return { ...channel, instrumentDevice: device }
+          return { ...channel, instrument: device }
         default:
           console.error('Dont know what to do with this device type')
           return channel
@@ -38,7 +36,6 @@ export default function channels(state = INITIAL_STATE, action) {
     case 'synthz0r.messages.CreateChannelResponse':
       return { ...state, channels: [...state.channels, payload.channel] }
     case 'synthz0r.messages.CreateDeviceResponse':
-      console.log(payload)
       return {
         ...state,
         channels: addDevice(state.channels, payload.channelId, payload.device),

@@ -81,6 +81,28 @@
                 }
               }
             },
+            "ListDeviceNamesRequest": {
+              "fields": {}
+            },
+            "ListDeviceNamesResponse": {
+              "fields": {
+                "effectDevices": {
+                  "rule": "repeated",
+                  "type": "string",
+                  "id": 1
+                },
+                "instrumentDevices": {
+                  "rule": "repeated",
+                  "type": "string",
+                  "id": 2
+                },
+                "noteDevices": {
+                  "rule": "repeated",
+                  "type": "string",
+                  "id": 3
+                }
+              }
+            },
             "ListChannelsRequest": {
               "fields": {}
             },
