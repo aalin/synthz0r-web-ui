@@ -17,6 +17,7 @@ export default function appReducer(state = INITIAL_STATE, action) {
           channelId: payload.channelId,
         },
       }
+    case 'synthz0r.messages.CreateDeviceResponse':
     case 'CLOSE_NEW_DEVICE_FORM':
       return {
         ...state,
