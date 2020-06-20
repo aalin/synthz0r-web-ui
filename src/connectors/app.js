@@ -23,8 +23,8 @@ function mapDispatchToProps(dispatch) {
       )
     },
     closeNewDeviceForm() {
-      dispatch({ type: "CLOSE_NEW_DEVICE_FORM" })
-    }
+      dispatch({ type: 'CLOSE_NEW_DEVICE_FORM' })
+    },
   }
 }
 

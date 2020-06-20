@@ -20,7 +20,7 @@ export default function appReducer(state = INITIAL_STATE, action) {
     case 'CLOSE_NEW_DEVICE_FORM':
       return {
         ...state,
-        newDeviceForm: null
+        newDeviceForm: null,
       }
     case 'synthz0r.messages.ListDeviceNamesResponse':
       return { ...state, deviceNames: action.payload }
