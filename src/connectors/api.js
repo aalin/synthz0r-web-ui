@@ -3,7 +3,7 @@ import * as apiActions from '../api/actions'
 
 function mapStateToProps(state) {
   return {
-    api: state.api
+    api: state.api,
   }
 }
 

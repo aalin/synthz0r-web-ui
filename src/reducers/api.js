@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  connected: false
+  connected: false,
 }
 
 export default function api(state = INITIAL_STATE, action) {

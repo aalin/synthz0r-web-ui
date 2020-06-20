@@ -4,6 +4,14 @@
       "nested": {
         "messages": {
           "nested": {
+            "DeviceType": {
+              "values": {
+                "UNKNOWN": 0,
+                "NOTE_DEVICE": 1,
+                "INSTRUMENT_DEVICE": 2,
+                "EFFECT_DEVICE": 3
+              }
+            },
             "Envelope": {
               "fields": {
                 "id": {
@@ -196,15 +204,19 @@
                   "type": "string",
                   "id": 2
                 },
+                "type": {
+                  "type": "DeviceType",
+                  "id": 3
+                },
                 "parameters": {
                   "rule": "repeated",
                   "type": "DeviceParameter",
-                  "id": 3
+                  "id": 4
                 },
                 "tables": {
                   "rule": "repeated",
                   "type": "DeviceTable",
-                  "id": 4
+                  "id": 5
                 }
               }
             },
@@ -259,7 +271,7 @@
                 }
               }
             },
-            "CreateInstrumentDeviceRequest": {
+            "CreateDeviceRequest": {
               "fields": {
                 "name": {
                   "type": "string",
@@ -268,38 +280,22 @@
                 "channelId": {
                   "type": "int32",
                   "id": 2
-                }
-              }
-            },
-            "CreateNoteDeviceRequest": {
-              "fields": {
-                "name": {
-                  "type": "string",
-                  "id": 1
                 },
-                "channelId": {
-                  "type": "int32",
-                  "id": 2
-                }
-              }
-            },
-            "CreateEffectDeviceRequest": {
-              "fields": {
-                "name": {
-                  "type": "string",
-                  "id": 1
-                },
-                "channelId": {
-                  "type": "int32",
-                  "id": 2
+                "type": {
+                  "type": "DeviceType",
+                  "id": 3
                 }
               }
             },
             "CreateDeviceResponse": {
               "fields": {
+                "channelId": {
+                  "type": "int32",
+                  "id": 1
+                },
                 "device": {
                   "type": "Device",
-                  "id": 1
+                  "id": 2
                 }
               }
             }

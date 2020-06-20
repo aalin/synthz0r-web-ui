@@ -1,0 +1,20 @@
+.parameters {
+  margin: var(--spacing);
+}
+
+.parameter {
+  display: flex;
+  font-size: .8em;
+}
+
+.parameter label,
+.parameter input {
+  flex: 1 0 45%;
+  max-width: 45%;
+  display: inline-block;
+}
+
+.parameter span {
+  flex: 1 1 10%;
+  text-align: right;
+}

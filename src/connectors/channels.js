@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import * as apiActions from '../api/actions'
+import { nameToValue } from '../api/deviceTypeEnum'
 
 function mapStateToProps(state) {
   return {
@@ -14,7 +15,26 @@ function mapDispatchToProps(dispatch) {
     },
     createChannel() {
       dispatch(apiActions.request('CreateChannelRequest'))
-    }
+    },
+    addNoteDevice(channelId, name) {
+      dispatch(
+        apiActions.request('CreateNoteDeviceRequest', { channelId, name })
+      )
+    },
+    addInstrumentDevice(channelId, name) {
+      dispatch(
+        apiActions.request('CreateInstrumentDeviceRequest', { channelId, name })
+      )
+    },
+    addDevice(channelId, typeName) {
+      const type = nameToValue(typeName)
+
+      return (name) => {
+        dispatch(
+          apiActions.request(`CreateDeviceRequest`, { channelId, name, type })
+        )
+      }
+    },
   }
 }
 

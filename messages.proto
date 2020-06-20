@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package synthz0r.messages;
+
+enum DeviceType {
+  UNKNOWN = 0;
+  NOTE_DEVICE = 1;
+  INSTRUMENT_DEVICE = 2;
+  EFFECT_DEVICE = 3;
+}
+
+message Envelope {
+  uint32 id = 1;
+  string type = 2;
+  bytes payload = 3;
+}
+
+message TextRequest {
+  string message = 1;
+}
+
+message TextResponse {
+  string message = 1;
+}
+
+message ErrorResponse {
+  string message = 1;
+}
+
+message SuccessResponse {
+}
+
+message Channel {
+  uint32 id = 1;
+  string name = 2;
+  Device instrument = 3;
+  repeated Device noteDevices = 4;
+  repeated Device effectDevices = 5;
+}
+
+message ListChannelsRequest {
+}
+
+message ListChannelsResponse {
+  repeated Channel channels = 1;
+}
+
+message CreateChannelRequest {
+  string name = 1;
+}
+
+message CreateChannelResponse {
+  Channel channel = 1;
+}
+
+message RemoveChannelRequest {
+  uint32 id = 1;
+}
+
+message SetChannelInstrumentRequest {
+  uint32 channelId = 1;
+  uint32 instrumentId = 2;
+}
+
+message SetChannelInstrumentResponse {
+  Channel channel = 1;
+}
+
+message DeviceParameter {
+  string name = 1;
+  int32 min = 2;
+  int32 max = 3;
+  int32 defaultValue = 4;
+  int32 value = 5;
+  float scale = 6;
+  string unit = 7;
+}
+
+message DeviceTable {
+  string name = 1;
+  int32 min = 2;
+  int32 max = 3;
+  int32 defaultValue = 4;
+  repeated int32 data = 5;
+}
+
+message Device {
+  uint32 id = 1;
+  string name = 2;
+  DeviceType type = 3;
+  repeated DeviceParameter parameters = 4;
+  repeated DeviceTable tables = 5;
+}
+
+message UpdateDeviceParameterRequest {
+  uint32 id = 1;
+  string name = 2;
+  int32 value = 3;
+}
+
+message UpdateDeviceParameterResponse {
+  repeated DeviceParameter parameters = 1;
+}
+
+message UpdateDeviceTableRequest {
+  uint32 id = 1;
+  string name = 2;
+  repeated int32 data = 3;
+}
+
+message UpdateDeviceTableResponse {
+  repeated DeviceTable tables = 1;
+}
+
+message CreateDeviceRequest {
+  string name = 1;
+  int32 channelId = 2;
+  DeviceType type = 3;
+}
+
+message CreateDeviceResponse {
+  int32 channelId = 1;
+  Device device = 2;
+}

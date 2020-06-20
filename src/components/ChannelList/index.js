@@ -7,7 +7,13 @@ import styles from './styles.css'
 
 function ChannelList(props) {
   const channels = props.channels.channels.map((channel) => (
-    <Channel key={channel.id} channel={channel} />
+    <Channel
+      key={channel.id}
+      channel={channel}
+      addNoteDevice={props.addDevice(channel.id, 'NOTE_DEVICE')}
+      addInstrumentDevice={props.addDevice(channel.id, 'INSTRUMENT_DEVICE')}
+      addEffectDevice={props.addDevice(channel.id, 'EFFECT_DEVICE')}
+    />
   ))
 
   return (

@@ -3,49 +3,6 @@
   --box-shadow: inset 0 0 7px #fff;
 }
 
-.title {
-  padding: var(--spacing);
-  font-weight: bold;
-}
-
-.parameters {
-  margin: var(--spacing);
-}
-
-.parameter {
-  display: flex;
-  font-size: .8em;
-}
-
-.parameter label,
-.parameter input {
-  flex: 1 0 45%;
-  max-width: 45%;
-  display: inline-block;
-}
-
-.parameter span {
-  flex: 1 1 10%;
-  text-align: right;
-}
-
-.table {
-  margin: var(--spacing);
-}
-
-.tableData {
-    max-width: 20em;
-}
-
-.tableData li {
-  margin: 1px;
-  border: 1px solid #333;
-  border-radius: 2px;
-  display: inline-block;
-  width: 2em;
-  text-align: right;
-}
-
 .deviceListList {
   flex-direction: row;
   display: flex;
@@ -77,15 +34,4 @@
 }
 
 .channel {
-}
-
-.addButton {
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  background: #000;
-  color: #fff;
-  padding: 2px;
-  margin: 0;
-  position: relative;
-  font-size: .7em;
 }
