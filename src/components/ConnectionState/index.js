@@ -7,7 +7,7 @@ import styles from './styles.css'
 function DisconnectedFlash({}) {
   return (
     <div className={styles.disconnectedFlash}>
-      Disconnected...
+      Connecting...
     </div>
   )
 }

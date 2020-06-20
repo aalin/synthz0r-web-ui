@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
+import RangeInput from '../RangeInput'
 import styles from './Channel.css'
-
 
 function DeviceParameter({ param }) {
   const min = param.min || 0;
@@ -11,11 +11,10 @@ function DeviceParameter({ param }) {
   return (
     <li key={param.name} className={styles.parameter}>
       <label>{param.name}</label>
-      <input
-        type="range"
-        min={min || 0}
-        max={max || 0}
-        value={value || 0}
+      <RangeInput
+        min={min}
+        max={max}
+        value={value}
         onChange={() => { console.error("TODO: Implement me!") }}
       />
       <span>{value}</span>
