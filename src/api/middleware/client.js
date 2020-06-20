@@ -1,20 +1,14 @@
 import { EventEmitter } from 'events'
 
 class Client extends EventEmitter {
-  constructor(protocol, host) {
+  constructor(protocol, uri) {
     super()
 
     this._protocol = protocol
 
     this._idCounter = 0
 
-    this._ws = new WebSocket(host)
-
-    this._ws.binaryType = 'arraybuffer'
-
-    this._ws.onopen = () => this.emit('open')
-    this._ws.onclose = () => this.emit('close')
-    this._ws.onmessage = (message) => this._handleMessage(message)
+    this._connect(uri)
 
     this._callbacks = new Map()
   }
@@ -46,6 +40,30 @@ class Client extends EventEmitter {
     this._callbacks.delete(id)
 
     callback({ type, message })
+  }
+
+  _connect(uri) {
+    console.log("connecting to", uri);
+    const ws = new WebSocket(uri)
+
+    ws.binaryType = 'arraybuffer'
+
+    ws.onopen = () => this.emit('open')
+
+    ws.onerror = (err) => console.log("error", err)
+
+    ws.onclose = () => {
+      this.emit('close');
+
+      setTimeout(() => {
+        console.log('Reconnecting');
+        this._connect(uri);
+      }, 1000);
+    };
+
+    ws.onmessage = (message) => this._handleMessage(message)
+
+    this._ws = ws;
   }
 }
 
