@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from '../Modal'
+import Table from './Table'
 import styles from './styles.css'
 import classnames from 'classnames'
 
@@ -11,43 +12,24 @@ function Value({ value, onChange }) {
   );
 }
 
-function TableEditor({ table }) {
+function TableEditor({ table, updateTable, onClose }) {
   const min = table.min || 0
   const max = table.max || 0
 
   const [data, setData] = React.useState(table.data || [])
 
   function setValue(index, value) {
-    setData(data.slice(0, index).concat(value, data.slice(index + 1)))
-  }
-
-  const rows = []
-
-  for (let y = max - 1; y >= min; y--) {
-    const cols = data.map((value, x) => {
-      const classNames = classnames(styles.col, {
-        [styles.active]: data[x] === y
-      });
-
-      return (
-        <td
-          key={x}
-          onClick={() => setValue(x, y)}
-          className={classNames}
-        />
-      )
-    })
-
-    rows.push(<tr key={y}>{cols}</tr>)
+    const newData = data.slice(0, index).concat(value, data.slice(index + 1))
+    setData(newData)
+    updateTable && updateTable(newData)
   }
 
   return (
     <Modal title="Edit table">
-      <table>
-        <tbody className={styles.tbody}>
-          {rows}
-        </tbody>
-      </table>
+      <Table data={data} min={min} max={max} setValue={setValue} />
+      <div>
+        <button onClick={onClose}>Close</button>
+      </div>
     </Modal>
   );
 }

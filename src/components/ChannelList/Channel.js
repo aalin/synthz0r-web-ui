@@ -5,7 +5,7 @@ import DeviceParameters from './DeviceParameters'
 import DeviceTables from './DeviceTables'
 import styles from './Channel.css'
 
-function Device({ device }) {
+function Device({ device, updateTable }) {
   if (!device) {
     return null;
   }
@@ -14,14 +14,17 @@ function Device({ device }) {
     <li className={styles.device}>
       <Header title={`${device.id}. ${device.name}`} />
       <DeviceParameters parameters={device.parameters} />
-      <DeviceTables tables={device.tables} />
+      <DeviceTables
+        tables={device.tables}
+        updateTable={updateTable.bind(null, device.id)}
+      />
     </li>
   );
 }
 
-function DeviceList({ title, devices, addDevice }) {
+function DeviceList({ title, devices, addDevice, updateTable }) {
   const items = devices.map(device => (
-    device && <Device key={device.id} device={device} />
+    device && <Device key={device.id} device={device} updateTable={updateTable} />
   ))
 
   return (
@@ -45,7 +48,7 @@ function DeviceList({ title, devices, addDevice }) {
   )
 }
 
-function Channel({ channel, addNoteDevice, addInstrumentDevice, addEffectDevice }) {
+function Channel({ channel, addNoteDevice, addInstrumentDevice, addEffectDevice, updateTable }) {
   return (
     <li key={channel.id} className={styles.channel}>
       <span>{channel.id}. {channel.name}</span>
@@ -54,16 +57,19 @@ function Channel({ channel, addNoteDevice, addInstrumentDevice, addEffectDevice 
           title="Note devices"
           devices={channel.noteDevices}
           addDevice={addNoteDevice}
+          updateTable={updateTable}
         />
         <DeviceList
           title="Instrument"
           devices={[channel.instrument]}
           addDevice={addInstrumentDevice}
+          updateTable={updateTable}
         />
         <DeviceList
           title="Effects"
           devices={channel.effectDevices}
           addDevice={addEffectDevice}
+          updateTable={updateTable}
         />
       </ul>
     </li>

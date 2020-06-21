@@ -31,6 +31,11 @@ function mapDispatchToProps(dispatch) {
         payload: { typeName, channelId },
       })
     },
+    updateTable(deviceId, tableName, data) {
+      dispatch(
+        apiActions.request('UpdateDeviceTableRequest', { id: deviceId, name: tableName, data })
+      )
+    }
   }
 }
 

@@ -14,6 +14,7 @@ function ChannelList(props) {
       addNoteDevice={() => props.openNewDeviceForm(channel.id, 'NOTE_DEVICE')}
       addInstrumentDevice={() => props.openNewDeviceForm(channel.id, 'INSTRUMENT_DEVICE')}
       addEffectDevice={() => props.openNewDeviceForm(channel.id, 'EFFECT_DEVICE')}
+      updateTable={props.updateTable}
     />
   ))
 
