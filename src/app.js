@@ -10,11 +10,10 @@ import styles from './app.css'
 class App extends React.Component {
   render() {
     return (
-      <ConnectionState>
-        <div className={styles.app}>
-          <ChannelList />
-        </div>
-      </ConnectionState>
+      <div className={styles.app}>
+        <ChannelList />
+        <ConnectionState />
+      </div>
     )
   }
 }

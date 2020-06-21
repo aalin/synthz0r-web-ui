@@ -1,13 +1,10 @@
-.wrapper {
-  transition: filter .1s;
-}
-
-.disconnected {
+.appDisabled {
   filter: blur(4px);
   pointer-events: none;
 }
 
 .disconnectedFlash {
+  z-index: 99999;
   position: fixed;
   top: 50%;
   left: 50%;
