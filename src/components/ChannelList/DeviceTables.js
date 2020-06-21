@@ -1,7 +1,10 @@
 import React from 'react'
 import styles from './DeviceTables.css'
+import TableEditor from '../TableEditor'
 
 function DeviceTable({ table }) {
+  const [showTable, setShowTable] = React.useState(false)
+
   const data = (table.data || []).map((value, i) => (
     <li key={i}>{value}</li>
   ))
@@ -9,7 +12,11 @@ function DeviceTable({ table }) {
   return (
     <li className={styles.table}>
       <label>{table.name}</label>
-      <ul className={styles.tableData}>{data}</ul>
+      <button onClick={setShowTable.bind(null, true)}>Edit</button>
+      <ul className={styles.tableData}>
+        {data}
+      </ul>
+      {showTable && <TableEditor table={table} />}
     </li>
   )
 }

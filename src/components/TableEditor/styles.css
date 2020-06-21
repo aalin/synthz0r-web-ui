@@ -1,0 +1,15 @@
+.tbody {
+  overflow: scroll;
+  max-height: 60vh;
+  display: block;
+}
+
+.col {
+  width: 20px;
+  height: 10px;
+  border: 1px solid #666;
+}
+
+.active {
+  background: #fc0;
+}
