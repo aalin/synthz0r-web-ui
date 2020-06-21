@@ -22,8 +22,6 @@ class Table extends React.Component {
     const x = Math.floor((e.pageX - rect.x) / CELL_WIDTH)
     const y = Math.floor((e.pageY - rect.y) / CELL_HEIGHT) + this.props.min
 
-    console.log(e.pageX - rect.x, e.pageY - rect.y)
-
     this.props.setValue(x, y)
   }
 

@@ -35,6 +35,11 @@ function mapDispatchToProps(dispatch) {
       dispatch(
         apiActions.request('UpdateDeviceTableRequest', { id: deviceId, name: tableName, data })
       )
+    },
+    updateParam(deviceId, paramName, value) {
+      dispatch(
+        apiActions.request('UpdateDeviceParameterRequest', { id: deviceId, name: paramName, value })
+      )
     }
   }
 }

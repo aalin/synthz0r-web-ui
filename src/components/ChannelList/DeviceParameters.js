@@ -2,10 +2,18 @@ import React from 'react'
 import RangeInput from '../RangeInput'
 import styles from './DeviceParameters.css'
 
-function DeviceParameter({ param }) {
+function DeviceParameter({ param, updateParam }) {
+  const [value, setValue] = React.useState(param.value || 0)
+
   const min = param.min || 0;
   const max = param.max || 0;
-  const value = param.value || 0;
+
+  function handleChange(e) {
+    const v = Number(e.target.value)
+    setValue(v)
+    updateParam(param.name, v)
+  }
+
 
   return (
     <li key={param.name} className={styles.parameter}>
@@ -14,16 +22,16 @@ function DeviceParameter({ param }) {
         min={min}
         max={max}
         value={value}
-        onChange={() => { console.error("TODO: Implement me!") }}
+        onChange={handleChange}
       />
       <span>{value}</span>
     </li>
   )
 }
 
-function DeviceParameters({ parameters }) {
+function DeviceParameters({ parameters, updateParam }) {
   const items = parameters.map((param) => (
-    <DeviceParameter key={param.name} param={param} />
+    <DeviceParameter key={param.name} param={param} updateParam={updateParam} />
   ));
 
   return (

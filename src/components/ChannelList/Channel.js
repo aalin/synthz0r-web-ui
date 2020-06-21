@@ -5,7 +5,7 @@ import DeviceParameters from './DeviceParameters'
 import DeviceTables from './DeviceTables'
 import styles from './Channel.css'
 
-function Device({ device, updateTable }) {
+function Device({ device, updateTable, updateParam }) {
   if (!device) {
     return null;
   }
@@ -13,7 +13,10 @@ function Device({ device, updateTable }) {
   return (
     <li className={styles.device}>
       <Header title={`${device.id}. ${device.name}`} />
-      <DeviceParameters parameters={device.parameters} />
+      <DeviceParameters
+        parameters={device.parameters}
+        updateParam={updateParam.bind(null, device.id)}
+      />
       <DeviceTables
         tables={device.tables}
         updateTable={updateTable.bind(null, device.id)}
@@ -22,9 +25,9 @@ function Device({ device, updateTable }) {
   );
 }
 
-function DeviceList({ title, devices, addDevice, updateTable }) {
+function DeviceList({ title, devices, addDevice, updateTable, updateParam }) {
   const items = devices.map(device => (
-    device && <Device key={device.id} device={device} updateTable={updateTable} />
+    device && <Device key={device.id} device={device} updateTable={updateTable} updateParam={updateParam} />
   ))
 
   return (
@@ -48,7 +51,7 @@ function DeviceList({ title, devices, addDevice, updateTable }) {
   )
 }
 
-function Channel({ channel, addNoteDevice, addInstrumentDevice, addEffectDevice, updateTable }) {
+function Channel({ channel, addNoteDevice, addInstrumentDevice, addEffectDevice, updateTable, updateParam }) {
   return (
     <li key={channel.id} className={styles.channel}>
       <span>{channel.id}. {channel.name}</span>
@@ -58,18 +61,21 @@ function Channel({ channel, addNoteDevice, addInstrumentDevice, addEffectDevice,
           devices={channel.noteDevices}
           addDevice={addNoteDevice}
           updateTable={updateTable}
+          updateParam={updateParam}
         />
         <DeviceList
           title="Instrument"
           devices={[channel.instrument]}
           addDevice={addInstrumentDevice}
           updateTable={updateTable}
+          updateParam={updateParam}
         />
         <DeviceList
           title="Effects"
           devices={channel.effectDevices}
           addDevice={addEffectDevice}
           updateTable={updateTable}
+          updateParam={updateParam}
         />
       </ul>
     </li>
