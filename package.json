@@ -18,7 +18,7 @@
     "classnames": "^2.2.6",
     "css-loader": "^3.6.0",
     "json-loader": "^0.5.7",
-    "postcss": "^7.0.32",
+    "postcss": "^8.2.10",
     "prettier": "^2.0.5",
     "protobufjs": "^6.9.0",
     "react": "^16.13.1",
